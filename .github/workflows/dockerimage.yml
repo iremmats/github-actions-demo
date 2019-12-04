@@ -20,7 +20,7 @@ jobs:
 
     - name: Is it set here
       run: |
-        echo $MY_VAR again
+        echo ${{ env.MY_VAR }} is not again
 
     - name: Publish Docker Action
       uses: jerray/publish-docker-action@v1.0.3
