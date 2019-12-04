@@ -3,9 +3,10 @@ name: Docker Image CI
 on: [push]
 
 jobs:
-
+  
   build:
-
+    env:
+      MY_VAR: my-tag
     runs-on: ubuntu-latest
 
     steps:
@@ -13,8 +14,6 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Print a greeting
-      env:
-        MY_VAR: my-tag
       run: |
         echo $MY_VAR
 
