@@ -18,6 +18,10 @@ jobs:
       run: |
         echo $MY_VAR
 
+    - name: Is it set here
+      run: |
+        echo $MY_VAR again
+
     - name: Publish Docker Action
       uses: jerray/publish-docker-action@v1.0.3
       with:
