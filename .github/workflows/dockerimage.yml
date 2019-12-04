@@ -35,7 +35,7 @@ jobs:
        path: .
        # Static image tag list, separated by comma
        #tags: ${{ env.MY_VAR }} # optional, default is latest
-       tags: ${{ cat DOCKER_TAG }}
+       tags: $(cat DOCKER_TAG)
        # Docker build-time variables, separated by comma
        #build_args: # optional
        # If allow pull request trigger build
