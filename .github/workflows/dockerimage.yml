@@ -13,9 +13,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Print a greeting
+    - name: Generate git hash
       run: |
-        echo $MY_VAR
+        git log -n 1 --pretty=format:'%h' > DOCKER_TAG
 
     - name: Is it set here
       run: |
@@ -34,7 +34,8 @@ jobs:
        # Docker build context
        path: .
        # Static image tag list, separated by comma
-       tags: ${{ env.MY_VAR }} # optional, default is latest
+       #tags: ${{ env.MY_VAR }} # optional, default is latest
+       tags: ${{ cat DOCKER_TAG }}
        # Docker build-time variables, separated by comma
        #build_args: # optional
        # If allow pull request trigger build
