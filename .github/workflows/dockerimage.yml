@@ -21,6 +21,7 @@ jobs:
       env:
         MY_VAR: extra
       run: |
+        echo "::set-env name=MY_VAR::$(git log -n 1 --pretty=format:'%h')"
         echo ${{ env.MY_VAR }} is not again
 
     - name: Is it set here2
