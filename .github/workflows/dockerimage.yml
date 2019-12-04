@@ -16,7 +16,7 @@ jobs:
        password: ${{ secrets.DOCKER_PASSWORD }}
        # Docker registry server address
        registry: https://registry.hub.docker.com
-       repoistory: iremmats/hello-github-actions 
+       repository: iremmats/hello-github-actions 
        # Docker file used to build image
        file: Dockerfile
        # Docker build context
