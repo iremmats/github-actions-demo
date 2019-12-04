@@ -16,13 +16,21 @@ jobs:
     - name: Generate git hash
       run: |
         git log -n 1 --pretty=format:'%h' > DOCKER_TAG
+    
+    - name: Is it set here1
+      env:
+        MY_VAR: extra
+      run: |
+        echo ${{ env.MY_VAR }} is not again
 
-    - name: Is it set here
+    - name: Is it set here2
       run: |
         echo ${{ env.MY_VAR }} is not again
 
     - name: Publish Docker Action
       uses: jerray/publish-docker-action@v1.0.3
+      env:
+        DOCKER_TAG: 
       with:
        username: ${{ secrets.DOCKER_USERNAME }}
        password: ${{ secrets.DOCKER_PASSWORD }}
@@ -34,8 +42,8 @@ jobs:
        # Docker build context
        path: .
        # Static image tag list, separated by comma
-       #tags: ${{ env.MY_VAR }} # optional, default is latest
-       tags: $(cat DOCKER_TAG)
+       tags: ${{ env.MY_VAR }} # optional, default is latest
+       #tags: $(cat DOCKER_TAG)
        # Docker build-time variables, separated by comma
        #build_args: # optional
        # If allow pull request trigger build
