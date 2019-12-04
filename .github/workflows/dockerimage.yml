@@ -11,7 +11,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-      
+
+    - name: Print a greeting
+      env:
+        MY_VAR: my-tag
+      run: |
+        echo $MY_VAR
+
     - name: Publish Docker Action
       uses: jerray/publish-docker-action@v1.0.3
       with:
@@ -25,7 +31,7 @@ jobs:
        # Docker build context
        path: .
        # Static image tag list, separated by comma
-       #tags: # optional, default is latest
+       tags: ${{ $MY_VAR }} # optional, default is latest
        # Docker build-time variables, separated by comma
        #build_args: # optional
        # If allow pull request trigger build
