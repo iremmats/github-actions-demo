@@ -1,0 +1,11 @@
+name: Greetings
+
+on: [create]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print tag
+      run: |
+        echo GITHUB_REF
